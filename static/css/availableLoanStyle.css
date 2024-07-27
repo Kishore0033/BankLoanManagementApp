@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+
+h1 {
+    font-family: 'Poppins', sans-serif !important;
+    text-align: center;
+    color: #09b000;
+    margin-top: 30px;
+}
+#Header {
+    font-family: 'Poppins', sans-serif !important;
+    margin-top: 50px;
+    text-align: center;
+}   
+
+#Header h1 span {
+    font-family: 'Poppins', sans-serif !important;
+    color: #1D67AF;
+}
+.container {
+    width: 100%;
+}
+
+table {
+border-collapse: collapse;
+width: 100%;
+border: none;
+margin: 50px auto;
+margin-bottom: 50px;
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+background-color: #f3f3f3;
+font-size: 13px;
+}
+
+th, td {
+border: none;
+padding: 8px;
+text-align: left;
+}
+
+.tableHeader {
+background-color: #30C730;
+color: white;
+padding: 15px;
+}
+
+td {
+    padding: 12px
+}
+
+tr:nth-child(even) {
+background-color: #A8D1DF;
+}
+
+.tableData:hover {
+background-color: #4DAADD;
+color: white;
+/* font-size: 15px; */
+transition: 0.2s;
+}
+
+#banner {
+    /* background-image: url('https://quickloanservice.in/public/img/Blogs.jpg'); */
+    /* background-color: black; */
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+#banner h1 span{
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 60px;
+    /* color: #000000; */
+    /* background-color: #F7F700;; */
+}
+#banner::before {
+    content: "";
+    background-image: url('https://quickloanservice.in/public/img/Blogs.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5; /* set the opacity of the layer */
+    z-index: -1; /* set the layer behind the content */
+}
+
+#apply-loan-button button {
+    padding: 8px 18px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 12px;
+    margin-bottom: 30px;
+}
+
+#apply-loan-button button:hover {
+    background-color: rgb(0, 0, 127);
+    transition: all 0.2s ease-in-out;
+}

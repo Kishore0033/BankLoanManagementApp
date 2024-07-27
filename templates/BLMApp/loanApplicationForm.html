@@ -1,0 +1,111 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/formStyle.css' %}">
+{% endblock style %}
+{% block content %}
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#navBar #navLink #apply-loan {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+
+#navBar #navLink #apply-loan:hover {
+    background-color: #ead7ff;
+}
+    
+#info {
+    flex: 1.2;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 17px;
+    line-height: 35px;
+    color: #3D4047;
+}
+
+#KYC-registration-button button {
+    padding: 8px 18px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 30px;
+    transition: background-color 0.3s;
+}
+#banner-image {
+    height: auto !important;
+}
+</style>
+<div id="title"><h2>Apply your loans Faster and get Quicker just through KYC ID</h2></div><hr>
+<div id="info-container">
+    <div id="banner-image"><img src="{% static 'images/bannerImages/ApplyLoanBannerImage.jpg' %}"></div>
+    <div id="info">
+        <p>We are providing the faster and quicker loan service just by your KYC ID. You have to verify your KYC before applying for loan. Also we are providing the popular loan and providing the maximum loan funds upto 90 lakhs.<br><br>Before applying for the loan, make sure that you have successfully registered and verified the KYC (Know Your Customer) on our bank.<br>If not registered, click on the register kyc button to do registration.</p>
+        <a id="KYC-registration-button" href="{% url 'kycRegistrationForm' %}"><button>Register KYC Now</button></a>
+    </div>
+</div>
+
+<div id="form-container">
+    <form method="post" action="{% url 'loanConfirmation' %}" class="form-design" style="margin-bottom: 50px;">
+        <h2 id="form-title">Loan Application Form</h2><hr>
+        {% csrf_token %}
+        <div id="loan-details-container">
+            <div id="info-container">
+                <div class="form-group">
+                <label for="{{ form.kyc_id.id_for_label }}">KYC ID</label>
+                {{ form.kyc_id }}
+                </div>
+            </div>
+            <div id="loan-details">
+                <div class="form-group">
+                <label id="loan_type" for="{{ form.loan_type.id_for_label }}">Loan Type</label>
+                {{ form.loan_type }}
+                </div>
+                <div class="form-group">
+                <label for="{{ form.loan_plan.id_for_label }}">Loan Plan</label>
+                {{ form.loan_plan }}
+                </div>
+                <!-- <div class="form-group">
+                    <label id="loan_plan" for="id_loan_plan">Loan Plan</label>
+                    <select name="loan_plan" required id="id_loan_plan">
+                      <option value="" selected>---------</option>
+                      {% for id, name in plan_choices.items %}
+                        <option value="{{ name }}">{{ name }}</option>
+                      {% endfor %}
+                    </select>
+                </div> -->
+                <div class="form-group">
+                <label for="{{ form.loan_amount.id_for_label }}">Loan Amount</label>
+                {{ form.loan_amount }}
+                </div>
+            </div>
+        </div>
+        <div id="validation-buttons">
+            <button type="submit" class="btn btn-primary">Apply Now</button>
+            <button type="reset" class="btn btn-primary">Reset</button> 
+        </div>
+  </form>      
+</div>
+
+<script>
+    
+    // function calculate() {
+    //     let loanType = document.getElementById("id_kyc_id");
+    //     alert(loanType.value)
+    // }
+
+    // const calculateButton = document.getElementById("calculate-button");
+    // calculateButton.addEventListener("click", calculate);
+</script>
+{% endblock content %}

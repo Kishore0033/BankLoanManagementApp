@@ -1,0 +1,121 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+    body {
+        background-color: #C9F5B6;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    #navBar #navLink #apply-loan {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+
+#navBar #navLink #apply-loan:hover {
+    background-color: #ead7ff;
+}
+    #page-title {
+        text-align: center;
+        font-family: 'Poppins', sans-serif !important;
+
+    }
+    #page-title h2 {
+        font-weight: bolder;
+    }
+    .card-title {
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif !important;
+        padding: 40px;
+        background-color: #05cd5f;
+        border-color: #05cd5f;
+        border-radius: 10px 10px 0px 0px;
+        border: none;
+        color: #fff;
+        text-align: center;
+        margin: 0px auto;
+        width: 100%;
+    }
+    .card {
+        background-color: aliceblue;
+        border-radius: 10px;
+        width: 85%;
+        margin: 60px auto;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    }
+    .details,
+    .due-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: 50px auto;
+        margin-bottom: 0px;
+        border-bottom: 1px solid #05cd5f;
+        padding-bottom: 10px;
+    }
+    .details ul li,
+    .due-details ul li {
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif !important;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px 15px 15px;
+    }
+    .details ul,
+    .due-details ul {
+        margin-right: 100px;
+    }
+    .details ul li .title,
+    .due-details ul li .title {
+        font-weight: bolder;
+        margin-right: 100px;
+    }
+    #payment-button {
+        padding: 20px;
+        padding-top: 0px;
+        /* margin: 0px auto; */
+    }
+    #payment-button button {
+        padding: 20px 100px;
+        border: none;
+        border-radius: 20px;
+        font-weight: bolder;
+        color: #fff;
+        background-color: #05cd5f;
+    }
+    #payment-button a {
+        text-align: center;
+    }
+    #payment-button button:hover {
+        background-color: #00a148;
+    }
+</style>
+<body>
+    <div class="card">
+        <div class="card-title" style="font-family: 'Poppins', sans-serif !important;"><h2>Hello <span style="font-weight: bolder;">{{ userName }},</span><h2><h4><br>Please confirm that you are applying for <b>Housing Loan</b><br>The loan details are given below</h4></div>
+        <div class="details" style="font-family: 'Poppins', sans-serif !important;">
+            <ul>
+                <li><span class="title">Loan Type </span><span class="value">{{ loanType }}</span></li>
+                <li><span class="title">Loan Plan </span><span class="value">{{ loanPlan }}</span></li>
+                <li><span class="title">Loan Amount </span><span class="value">Rs. {{ loanAmount }}</span></li>
+            </ul>
+            <ul>
+                <li><span class="title">Interest Amount </span><span class="value">Rs. {{ loanInterestAmount }}</span></li>
+                <li><span class="title">Total Payable Amount </span><span class="value">Rs. {{ loanTotalPayableAmount }}</span></li>
+                <li><span class="title">Monthly Payables </span><span class="value">Rs. {{ loanMonthlyPayableAmount }}</span></li>
+            </ul>
+        </div>
+        <!-- <hr style="border-color: blue;"> -->
+        <div class="due-details">
+            <a id="payment-button" href="{% url 'loanSuccess' %}" style="margin-left: 200px;"><button type="submit">Proceed to Apply</button></a>
+            <a id="payment-button" href="#" style="margin-right: 200px;" onclick="history.back()"><button>Cancel</button></a>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block content %}
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f9f9f9;
+		}
+		
+		.container {
+			margin: 50px auto;
+			max-width: 600px;
+			background-color: #fff;
+			padding: 50px;
+			box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+			text-align: center;
+		}
+		
+		.container h1 {
+			font-size: 36px;
+			color: indigo;
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		
+		.container p {
+			font-size: 18px;
+			color: #333;
+			margin-bottom: 30px;
+			line-height: 1.5;
+		}
+		
+		.container a {
+			background-color: indigo;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+			transition: all 0.3s ease;
+		}
+		
+		.container a:hover {
+			background-color: #333;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Your loan is still waiting for approval</h1>
+        <i class="fa-solid fa-spinner fa-spin-pulse" style="font-size: 40px; color: indigo; margin-right: 8px;"></i>
+		<p><br>Your loan is still in the pending state and waiting for approval.</p>
+			<p>Please contact your bank if the loan not approved for long period.</p>
+		<a href="#" onclick="history.back()">Go Back</a>
+	</div>
+</body>
+</html>
+{% endblock content %}

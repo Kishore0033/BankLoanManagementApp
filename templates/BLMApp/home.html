@@ -1,0 +1,111 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+  
+  body {
+      font-family: 'Poppins', sans-serif !important;
+  }
+
+  #navBar #navLink #home {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+
+#navBar #navLink #home:hover {
+    background-color: #ead7ff;
+}
+  
+  #loansByBank .loanType {
+    width: 30%;
+    /* padding: 25px;
+    padding-left: 25px; */
+    background-color: #CFCFCF;
+    box-shadow: 5px 5px 10px #394047;
+    background-size: cover;
+    transition: transform 0.3s;
+    /* margin: 20px; */
+}
+
+#loansByBank .loanType:hover {
+    transform:scale(1.06);
+    /* transition: 0.2s; */
+}
+#loanInfo {
+    margin: 60% 0% 0% 0%;
+    padding: 7%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s;
+}
+
+#loanInfo:hover {
+    background-color:white;
+    /* transition: 0.2s; */
+}
+</style>
+<main>
+    {% include 'BLMApp/inc/bannerSlider.html' %}
+    <div id="mainUpdates">
+      <div id="content">
+        <div id="Quotes">
+          <h1>Apply your <br>loans <span>Faster</span><br>and <span>Easier</span></h1><br>
+          <p>Get loan upto <b>90 lakhs</b> for housing loan</p>
+        </div>
+      </div>
+      <div id="statement">
+        <div id="headingWithButton">
+          <h1>Make Payment<br>through <span>Online</span><br>(Your EMI)</h1><br>
+          <p>Now, You can pay your EMI through online</p><br>
+        </div>
+      </div>	
+    </div>
+    <div id="featuresContainer">
+      <div id="features">
+        <div id="popularLoansTitle">
+          <h1>Popular Loans provided by us</h1>
+        </div>
+        <div id="loansByBank">
+
+
+          {% for datas in loan_type_data %}
+          <div id="CarLoan" class="loanType" style="background-image: url({{datas.loan_image.url}});">
+            <div id="loanInfo">
+              <h3>{{ datas.loan_type }}</h3>
+              <p>{{datas.loan_description}}<br>Max fund provided upto <br><span><b>₹ {{datas.max_loan_amount}}</span></b></p>
+            </div>
+          </div>
+          {% endfor %}
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="note">Please make sure that you have successfully completed your <a href="#Form:Customer_KYC_Registration">KYC (Know Your Customer) Registration</a> before applying for a loan</h3>
+    <div id="bannerImage">
+      <img src="{% static 'images/bannerImages/LoanBannerImage1.png' %}">
+    </div>
+
+    <div class="featuresByUs">
+      <div id="EasyEMI" class="features">
+        <h3>Easy EMI payment (Online mode)</h3>
+        <p>You can easily pay your dues for your loans through online</p> <br>
+        <a href="#Form:Pay_EMI" class="Buttons">Make Payment Online</a>
+      </div>
+      <div id="KYC" class="features">
+        <h3>Apply Loan with KYC</h3>
+        <p>You can apply loan only when you registered your KYC</p> <br>
+        <a href="#Form:Pay_EMI" class="Buttons">Register for KYC</a>
+      </div>
+      <div id="HighestLoanAmt" class="features">
+        <h3>We are providing a Maximum fund of <b>90 lakhs</b> for Housing Loan</h3>
+        <p>You can easily pay your dues through online</p> 
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

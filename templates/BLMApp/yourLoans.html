@@ -1,0 +1,236 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif !important;
+        background-color: #EFEFEF;
+    }
+    #navBar #navLink #your-loans {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+#navBar #navLink #your-loans:hover {
+    background-color: #ead7ff;
+}
+    .card-container {
+        padding-top: 30px;
+    }
+    #page-title {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+    }
+    #page-title h2 {
+        font-weight: bolder;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    .card-title {
+        font-size: 25px;
+        padding: 20px;
+        padding-left: 65px;
+        background-color: blue;
+        border-radius: 10px 10px 0px 0px;
+        color: #fff;
+    }
+    .card-title span {
+        float: right; 
+        margin-right: 50px;
+    }
+    .card {
+        background-color: aliceblue;
+        border-radius: 10px;
+        width: 90%;
+        margin: 0px auto;
+        margin-bottom: 50px;
+        padding-bottom: 20px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .details {
+        border-bottom: 1px solid blue;
+    }
+    .due-details #emi-paid-pending {
+        padding-top: 20px;
+    }
+    .details,
+    .due-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: 0px auto;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .details ul li,
+    .due-details ul li {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px 15px 15px;
+    }
+    .details ul,
+    .due-details ul {
+        margin-right: 100px;
+    }
+    .details ul li .title,
+    .due-details ul li .title {
+        font-weight: bolder;
+        margin-right: 100px;
+    }
+    #payment-button {
+        padding: 0px 120px 0px 0px;
+    }
+    #payment-button button {
+        padding: 20px;
+        border: none;
+        border-radius: 20px;
+        font-weight: bolder;
+        color: #fff;
+        background-color: #05cd5f;
+    }
+    #payment-button button:hover {
+        background-color: #00a148;
+    }
+
+    /* else */
+    /* Set login box styles */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 40px;
+}
+
+.login-box {
+  flex-basis: 50%;
+  background-color: #fff;
+  width: 70%;
+  margin: 5% auto;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+#logo-login {
+    width: 30%; 
+    height: auto; 
+    margin-bottom: 50px;
+}
+
+.login-box h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+  float: right; 
+  margin-right: 10px;
+}
+    .forgot-password {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Set login image styles */
+.login-image {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-image img {
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+  /* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+.login-wrapper {
+flex-direction: column;
+height: auto;
+}
+
+.login-box,
+.login-image {
+flex-basis: 100%;
+}
+
+.login-box {
+margin-bottom: 20px;
+}
+}
+}
+</style>
+
+    <div id="page-title"><h2>Your Loans</h2></div><hr>
+    <div class="card-container">
+        {% if loans %}
+        {% for loan in loans %}
+        <div class="card">
+            <h2 class="card-title">{{ loan.loan_type }}<span>Applied on :  {{ loan.applied_on }}</span></h2>
+            <div class="approval-status" style="text-align: center;">
+                <span class="title" style="text-align: center; font-weight: bold; display: flex; justify-content: space-between; margin: 15px 100px; margin-right: 150px; font-size: 18px;">
+                    {% if loan.approval_status == 'Pending...' or loan.approval_status == 'Pending' %}
+                    <p style="margin-left: 20px; color: indigo">Status - <i class="fa-solid fa-spinner fa-spin-pulse" style="color: indigo; margin-right: 8px;"></i>Waiting for Approval</p>
+                    {% elif loan.approval_status == 'Approved' %}
+                    <p style="margin-left: 20px; color: #038F83">Status - <i class="fa-sharp fa-solid fa-circle-check" style="color: #038F83; margin-right: 5px;"></i>{{ loan.approval_status }}</p>
+                    {% elif loan.approval_status == 'Rejected' %}
+                    <p style="margin-left: 20px; color: red">Status - <i class="fa-sharp fa-solid fa-circle-xmark" style="color: #F70000; margin-right: 5px;"></i>{{ loan.approval_status }}</p>
+                    {% endif %}
+                    <p>Loan ID: <span style="font-weight: 300;">{{ loan.loan_id }}</span></p>
+                </span>
+            </div>
+            <div class="details">
+                <ul>
+                    <li><span class="title">Loan Type </span><span class="value">{{ loan.loan_type }}</span></li>
+                    <li><span class="title">Loan Plan </span><span class="value">{{ loan.loan_plan }}</span></li>
+                    <li><span class="title">Loan Amount </span><span class="value">Rs. {{ loan.loan_amount }}</span></li>
+                </ul>
+                <ul>
+                    <li><span class="title">Interest Amount </span><span class="value">Rs. {{ loan.interest_amount }}</span></li>
+                    <li><span class="title">Total Payable Amount </span><span class="value">Rs. {{ loan.total_payable_amount }}</span></li>
+                    <li><span class="title">Monthly Payables </span><span class="value">Rs. {{ loan.monthly_payable_amount }}</span></li>
+                </ul>
+            </div>
+            {% if loan.approval_status == 'Approved'%}
+            <div class="due-details">
+                <div id="emi-paid-pending">
+                    <ul>
+                        <li><span class="title">EMI Paid</span><span class="value">{{ loan.emi_paid }} months</span></li>
+                        <li><span class="title">EMI Pending</span><span class="value">{{ loan.emi_pending }} months</span></li>
+                    </ul>
+                </div>
+                <a id="payment-button" href="{% url 'payEmi' %}"><button>Pay your Due</button></a>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="login-box" style="text-align: left !important;">
+            <span style="font-weight: bolder; text-align: left !important; font-size: 20px;">You haven't applied for any loans</span><br><br><hr>
+            <p class="forgot-password"><br>Apply for loan now? <a href="{% url 'loanForm' %}">Apply here</a><br><br>
+  
+          </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock content %}

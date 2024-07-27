@@ -1,0 +1,58 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block content %}
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f9f9f9;
+		}
+		
+		.container {
+			margin: 50px auto;
+			max-width: 600px;
+			background-color: #fff;
+			padding: 50px;
+			box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+			text-align: center;
+		}
+		
+		.container h1 {
+			font-size: 36px;
+			color: #d43f3a;
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		
+		.container p {
+			font-size: 18px;
+			color: #333;
+			margin-bottom: 30px;
+			line-height: 1.5;
+		}
+		
+		.container a {
+			background-color: #d43f3a;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+			transition: all 0.3s ease;
+		}
+		
+		.container a:hover {
+			background-color: #333;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>User Not Found</h1>
+		<img src="https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659652_960_720.png" style="width: 100px; height: auto;" alt="User Not Found">
+		<p><br>We're sorry, but we couldn't find a user with the KYC ID you provided.</p>
+			<p>Please double-check the ID and try again, or contact customer support if you need further assistance.</p>
+		<a href="#" onclick="history.back()">Go Back</a>
+	</div>
+</body>
+</html>
+{% endblock content %}

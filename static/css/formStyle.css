@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+#title {
+    text-align: center;
+    margin-top: 15px;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+#title h2 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: bolder;
+}
+
+#info-container {
+    display: flex;
+    justify-content: center;
+}
+
+#banner-image {
+    width: 40%;
+    height: 350px;
+    margin: 50px;
+    flex: 1;
+}
+
+#banner-image img {
+    width: 100%;
+    height: 100%;
+}
+
+#info {
+    flex: 1.2;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 17px;
+    line-height: 35px;
+    color: #3D4047;
+}
+
+#KYC-registration-button button {
+    padding: 8px 18px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+#KYC-registration-button button:hover {
+    background-color: rgb(0, 0, 127);
+    transition: all 0.2s ease-in-out;
+}
+
+#form-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #C7CFD6;
+}
+
+.form-design {
+background-color: white;
+max-width: 1130px;
+margin: 50px auto;
+padding: 20px;
+margin-bottom: 50px;
+border-radius: 5px;
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+font-family: 'Poppins', sans-serif;
+}
+
+#form-title {
+text-align: center;
+margin-top: 10px;
+margin-bottom: 30px;
+font-family: 'Poppins', sans-serif !important;
+font-weight: bold;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+#loan-details-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"], 
+input[type="number"] {
+width: calc(100% - 20px);
+padding: 10px;
+border: none;
+border-radius: 5px;
+background-color: #f3f3f3;
+font-size: 16px;
+font-family: inherit;
+color: #666;
+}
+select {
+width: 100%;
+padding: 10px;
+border: none;
+border-radius: 5px;
+background-color: #f3f3f3;
+font-size: 16px;
+font-family: inherit;
+color: #666;
+}
+
+select:focus {
+outline: none;
+background-color: #e0e0e0;
+}
+
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus, 
+input[type="number"]:focus {
+outline: none;
+background-color: #e0e0e0;
+}
+
+#validation-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button[type="submit"] {
+display: block;
+width: 30%;
+padding: 10px;
+border: none;
+border-radius: 5px;
+background-color: #428bca;
+color: #fff;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+button[type="reset"] {
+    margin-left: 20px;
+    display: block;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #428bca;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #428bca;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+background-color: #3071a9;
+}
+
+button[type="reset"]:hover {
+    background-color: #428bca;
+    color: #ffffff;
+}
+    

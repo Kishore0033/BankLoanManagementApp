@@ -1,0 +1,341 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+/* Reset styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set body styles */
+body {
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* nav bar */
+#logo img {
+    width: 100px;
+    height: 25px;
+    padding: 0px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    flex: 1;
+}
+
+#navBar {
+    background-color: #F7F700;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 8px 6px -6px #888888;;
+}
+
+#navBar #navTitleBar {
+    background-color: #F7F700;
+    width: 90%;
+    margin: 0px auto;
+    /* background-color: #FFD43B; */
+}
+
+#navBar #navLink {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 8px 6px -6px #888888;
+    z-index: 9999;
+}
+
+#navBar #navLink.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#navBar #navLink a {
+    /* display: block; */
+    color: #333;
+    font-size: 12px;
+    padding: 14px 16px;
+    text-decoration: none;
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+}
+
+#navBar #navLink a:hover {
+color: #183153;
+background-color: #DEC9F5;
+}
+
+#navBar #navLink a.active {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+}
+
+#navBar #navLink a i {
+    font-size: 18px; 
+    color:#183153;
+    margin-bottom: 10px;
+}
+#navTitleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  #navLink a {
+    justify-content: center;
+    align-items: center;
+  }
+  #navLink a i {
+    margin-right: 10px;
+    margin-bottom: 0px !important;
+  }
+  #login a button {
+    border: none;
+    padding: 8px 20px;
+    margin: 15px;
+    margin-right: 0px;
+    border-radius: 5px;
+    font-size: small;
+    font-family: 'Poppins', sans-serif !important;
+    /* background-color: #F7F700; */
+    background-color: #0093D4;
+    color:#fff;
+    font-weight: bolder;
+    transition: background-color 0.3s;
+  }
+  #login #loginbtn {
+    margin-right: 2px !important;
+  }
+  #login a button:hover {
+    background-color: #006a98;
+    /* transition: all 0.2s ease-in-out; */
+  }
+
+
+/* Set login box styles */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 40px;
+}
+
+.login-box {
+  flex-basis: 50%;
+  background-color: #fff;
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+#logo-login {
+    width: 30%; 
+    height: auto; 
+    margin-bottom: 50px;
+}
+
+.login-box h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+  float: right; 
+  margin-right: 10px;
+}
+
+/* Set form styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-top: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 13px;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  color: #555;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  background-color: #e6e6e6;
+}
+
+button[type="submit"] {
+  border: none;
+  border-radius: 4px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+  width: 40%;
+  margin: 0px auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
+  font-weight: bold;
+}
+
+.forgot-password {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Set login image styles */
+.login-image {
+  flex-basis: 50%;
+  display: flex;
+  margin-top: 150px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-image img {
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+  /* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+.login-wrapper {
+flex-direction: column;
+height: auto;
+}
+
+.login-box,
+.login-image {
+flex-basis: 100%;
+}
+
+.login-box {
+margin-bottom: 20px;
+}
+}
+}
+/* Footer */
+
+footer {
+        background-color: #183153;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .social-media a {
+        margin-right: 20px;
+        color: white;
+    }
+    #Footer p {
+        margin-top: 15px;
+    }
+
+
+</style>
+<body>
+
+  <nav id="navBar">
+    <div id="navTitleBar">
+      <div id="logo">
+        <img src="https://yoursbank.com.br/wp-content/uploads/2021/10/logo-yours-pb.png">
+      </div>
+      <div id="login">
+        <a id="loginbtn" href="{% url 'login' %}"><button>LOGIN</button></a>
+        <a id="signupbtn" href="{% url 'signup' %}"><button>SIGN UP</button></a>
+      </div>
+    </div>
+  </nav>
+    <div class="login-wrapper">
+        <div class="login-box">
+          <h1>USER LOGIN</h1>
+          <img id="logo-login" src="https://yoursbank.com.br/wp-content/uploads/2021/10/logo-yours-pb.png">
+          <form action="#" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form }}
+            </div><br>
+            <button type="submit">LOGIN</button><br>
+            <p class="forgot-password"><a href="#">Forgot password?</a></p>
+            <p class="forgot-password">Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
+          </form>
+        </div>
+        <div class="login-image">
+            <img src="{% static 'images/bannerImages/LoginImage.png' %}" alt="Login Image">
+        </div>
+      </div>
+      <footer id="Footer">
+        <div id="logo">
+            <img src="https://yoursbank.com.br/wp-content/uploads/2021/10/logo-yours-pb.png">
+          </div>
+        <p id="copyright">&copy; 2023 Yours Bank. All rights reserved.</p>
+        <div class="social-media">
+            <span style="margin-right: 30px;">Follow us on</span>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+    </footer>         
+
+</body>
+</html>

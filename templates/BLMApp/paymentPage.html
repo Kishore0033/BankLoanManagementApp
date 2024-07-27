@@ -1,0 +1,472 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+    body {
+        background-color: #C9F5B6;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    #navBar #navLink #pay-emi-online {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+
+#navBar #navLink #pay-emi-online:hover {
+    background-color: #ead7ff;
+}
+    #page-title {
+        text-align: center;
+        font-family: 'Poppins', sans-serif !important;
+
+    }
+    #page-title h2 {
+        font-weight: bolder;
+    }
+    .card-title {
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif !important;
+        padding: 40px;
+        background-color: #05cd5f;
+        border-color: #05cd5f;
+        border-radius: 10px 10px 0px 0px;
+        border: none;
+        color: #fff;
+        text-align: center;
+        margin: 0px auto;
+        width: 100%;
+    }
+    .card {
+        background-color: aliceblue;
+        border-radius: 10px;
+        width: 85%;
+        margin: 60px auto;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    }
+    .emiAmount {
+        padding: 20px;
+        padding-bottom: 15px;
+        border-radius: 5px;
+        text-align: center;
+        border-bottom: 1px solid #00c458;
+        color: #00ae4e;
+        width: 60%;
+        margin: 20px auto;
+        margin-bottom: 0px;
+    }
+    .details,
+    .due-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: 30px auto;
+        margin-bottom: 0px;
+        /* border-bottom: 1px solid #05cd5f; */
+        padding-bottom: 5px;
+    }
+    .details ul li,
+    .due-details ul li {
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif !important;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px 15px 15px;
+    }
+    .details ul,
+    .due-details ul {
+        margin-right: 100px;
+    }
+    .details ul li .title,
+    .due-details ul li .title {
+        font-weight: bolder;
+        margin-right: 100px;
+    }
+    .paymentModes {
+        margin: 20px 80px;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #dadada;
+        background-color: white;
+    }
+    .paymentModes #payment-mode-title {
+        padding-bottom: 20px;
+    }
+    #payment-mode-choices .choices {
+        background-color: whitesmoke;
+        border-radius: 5px;
+        /* width: 90%; */
+        margin: 20px auto;
+        box-shadow: 0px 0px 5px #dadada;
+        list-style-type: none;
+        padding: 20px;
+    }
+    #payment-mode-choices .choices:hover {
+        box-shadow: 0px 0px 10px #c0c0c0;
+        font-weight: bold;
+    }
+    #payment-mode-choices .choices .logos .choices-logo {
+        list-style-type: none;
+        margin-left: 40px;
+    }
+    #payment-mode-choices .choices .logos .choices-logo img {
+        width: 60px;
+    }
+    #payment-mode-choices .choices {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #payment-button {
+        padding: 20px;
+        padding-top: 0px;
+        /* margin: 0px auto; */
+    }
+    #payment-button button {
+        padding: 20px 100px;
+        border: none;
+        border-radius: 20px;
+        font-weight: bolder;
+        color: #fff;
+        background-color: #05cd5f;
+    }
+    #payment-button a {
+        text-align: center;
+    }
+    #payment-button button:hover {
+        background-color: #00a148;
+    }
+
+    /* Form */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+#title {
+    text-align: center;
+    margin-top: 15px;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+#title h2 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: bolder;
+}
+
+#info-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#banner-image {
+    width: 40%;
+    height: 350px;
+    margin: 50px;
+    flex: 1;
+}
+
+#banner-image img {
+    width: 100%;
+    height: 100%;
+}
+
+#info {
+    flex: 1.2;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 17px;
+    line-height: 35px;
+    color: #3D4047;
+}
+
+#KYC-registration-button button {
+    padding: 8px 18px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+#KYC-registration-button button:hover {
+    background-color: rgb(0, 0, 127);
+    transition: all 0.2s ease-in-out;
+}
+
+#form-container {
+    width: 100%;
+    overflow: hidden;
+    /* background-color: #C7CFD6; */
+}
+
+.form-design {
+background-color: white;
+max-width: 1130px;
+margin: 50px auto;
+padding: 20px;
+margin-bottom: 50px;
+border-radius: 5px;
+/* box-shadow: 3px 3px 3px #797979; */
+font-family: 'Poppins', sans-serif;
+}
+
+#form-title {
+text-align: center;
+margin-top: 10px;
+margin-bottom: 30px;
+font-family: 'Poppins', sans-serif !important;
+font-weight: bold;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+#loan-details-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"], 
+input[type="number"] {
+width: calc(100% - 20px);
+padding: 10px;
+border: none;
+border-radius: 5px;
+background-color: #f3f3f3;
+font-size: 16px;
+font-family: inherit;
+color: #666;
+}
+select {
+width: 100%;
+padding: 10px;
+border: none;
+border-radius: 5px;
+background-color: #f3f3f3;
+font-size: 16px;
+font-family: inherit;
+color: #666;
+}
+
+select:focus {
+outline: none;
+background-color: #e0e0e0;
+}
+
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus, 
+input[type="number"]:focus {
+outline: none;
+background-color: #e0e0e0;
+}
+
+#validation-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+display: block;
+width: 30%;
+padding: 10px;
+border: none;
+border-radius: 5px;
+background-color: #428bca;
+color: #fff;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.btn[type="reset"] {
+    margin-left: 20px;
+    display: block;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #428bca;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #428bca;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+background-color: #3071a9;
+}
+
+.btn[type="reset"]:hover {
+    background-color: #428bca;
+    color: #ffffff;
+}
+    
+</style>
+<body>
+    <div class="card">
+        <div class="card-title" style="font-family: 'Poppins', sans-serif !important;"><h2>Hello <span style="font-weight: bolder;">{{ userName }},</span><h2><h4>The loan details are given below</h4></div>
+        <div class="emiAmount">
+            <h3 id="emi-amount">Your EMI amount is <b>Rs. {{ emiAmount }} /-</b></h3>
+        </div>
+        <div class="details" style="font-family: 'Poppins', sans-serif !important;">
+            <ul>
+                <li><span class="title">Loan Type </span><span class="value">{{ loanType }}</span></li>
+                <li><span class="title">Loan Plan </span><span class="value">{{ loanPlan }}</span></li>
+                <li><span class="title">Loan Amount </span><span class="value">Rs. {{ loanAmount }}</span></li>
+            </ul>
+            <ul>
+                <li><span class="title">Interest Amount </span><span class="value">Rs. {{ interestAmount }}</span></li>
+                <li><span class="title">Total Payable Amount </span><span class="value">Rs. {{ totalPayableAmount }}</span></li>
+                <li><span class="title">Monthly Payables </span><span class="value">Rs. {{ emiAmount }}</span></li>
+            </ul>
+        </div>
+        <div class="paymentModes">
+            <h3 id="payment-mode-title">Choose your mode of payment</h3>
+            <ul id="payment-mode-choices">
+                <li class="choices" id="debit-card"><span><input type="radio" name="payment" value="debit-card"><i class="fa-solid fa-credit-card" style="font-size: 20px; margin-left: 20px; margin-right: 10px;"></i> Debit/Credit Card</span>
+                    <div class="logos">
+                        <ul style="display: flex; justify-content: center; align-items: center; margin-right: 20px;">
+                            <li class="choices-logo"><img src="{% static 'images/logos/visa.png' %}"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/masterCard.png' %}" style="width: 80px;"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/rupay.png' %}" style="width: 80px;"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/maestro.png' %}"></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="choices" id="net-banking"><span><input type="radio" name="payment" value="net-banking"><i class="fa-solid fa-building-columns" style="font-size: 20px; margin-left: 20px; margin-right: 10px;"></i> Net Banking</span>
+                    <div class="logos">
+                        <ul style="display: flex; justify-content: center; align-items: center; margin-right: 20px;">
+                            <li class="choices-logo"><img src="{% static 'images/logos/boi.png' %}"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/sbi.png' %}" style="width: 80px;"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/indianBank.png' %}" style="width: 80px;"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/iciciBank.png' %}"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/yesBank.png' %}"></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="choices" id="upi"><span><input type="radio" name="payment" value="upi"><img src="{% static 'images/logos/upiLogo.png' %}" style="width: 50px; margin-left: 20px; margin-right: 10px;"> UPI</span>
+                    <div class="logos">
+                        <ul style="display: flex; justify-content: center; align-items: center; margin-right: 20px;">
+                            <li class="choices-logo"><img src="{% static 'images/logos/gPay.png' %}" style="width: 50px;"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/phonePay.png' %}" style="width: 40px;"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/paytm.png' %}"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/payPal.png' %}"></li>
+                            <li class="choices-logo"><img src="{% static 'images/logos/amazonPay.png' %}" style="width: 45px;"></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div id="debit-card-form" class="payment-form">
+                <div id="form-container">
+                    <form method="post" class="form-design" style="margin-bottom: 50px;">
+                        <h2 id="form-title">Debit/Credit Card Payment Form</h2><hr>
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Card Holder Name</label>
+                                <input type="text" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNo">Card Number</label>
+                                <input type="number" name="cardNo">
+                            </div>
+                            <div id="det" style="display: flex;">
+                                <div class="form-group" style="flex: 1;">
+                                    <label for="expiry-date">Expiry Date</label>
+                                    <input type="text" name="expiry-date" placeholder="Year/Month">
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label for="cvv">CVV</label>
+                                    <input type="password" name="cvv">
+                                </div>
+                            </div>
+                  </form>      
+            </div>
+            </div>
+            <div id="net-banking-form" class="payment-form">
+                <form method="post" class="form-design" style="margin-bottom: 50px;">
+                    <h2 id="form-title">Net Banking Payment Form</h2><hr>
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for="bank-name">Select your Bank:</label>
+                            <select id="bank-name" name="bank-name">
+                                <option value="sbi">Bank of India</option>
+                                <option value="sbi">State Bank of India</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="axis">Axis Bank</option>
+                            </select>
+                        </div>
+                </form>
+            </div>
+            
+            <div id="upi-form" class="payment-form">
+                <form method="post" class="form-design" style="margin-bottom: 50px;">
+                    <h2 id="form-title">UPI Payment Form</h2><hr>
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for="upi-id">UPI ID / Phone Number</label>
+                            <input type="text" name="upi-id">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Payer Name</label>
+                            <input type="text" name="name">
+                        </div>
+                        <a class="btn">Verify</a>
+                        </form>
+            </div>
+        </div>
+        <!-- <hr style="border-color: blue;"> -->
+        <div class="due-details">
+            <a id="payment-button" href="{% url 'paymentSuccess' %}" style="margin-left: 200px;"><button type="submit">Proceed to pay<br><span style="font-size: 18px;">Rs. {{ emiAmount }}/-</span></button></a>
+            <a id="payment-button" href="#" style="margin-right: 200px;" onclick="history.back()"><button>Go<br>Back</button></a>
+        </div>
+    </div>
+
+    <script>
+        // Hide all payment forms initially
+    document.querySelectorAll('.payment-form').forEach(form => {
+        form.style.display = 'none';
+    });
+    
+    // Show the selected payment form
+    document.querySelectorAll('input[name="payment"]').forEach(input => {
+        input.addEventListener('click', function() {
+            // Hide all payment forms
+            document.querySelectorAll('.payment-form').forEach(form => {
+                form.style.display = 'none';
+            });
+    
+            // Show the selected payment form
+            const paymentType = this.value;
+            document.querySelector(`#${paymentType}-form`).style.display = 'block';
+        });
+    });
+    
+    document.querySelector('.btn').addEventListener('click', function() {
+  const verified = document.createElement('h6');
+  verified.textContent = 'Verified';
+  verified.style.color = 'blue';
+  verified.style.margin = '0px 0px 0px 50px';
+  document.querySelector('#upi-form').appendChild(verified);
+});
+
+    </script>
+{% endblock content %}

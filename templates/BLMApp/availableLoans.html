@@ -1,0 +1,109 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/availableLoanStyle.css' %}">
+{% endblock style %}
+{% block content %}
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+
+}
+#navBar #navLink #availableLoans {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+
+#navBar #navLink #availableLoans:hover {
+    background-color: #ead7ff;
+}
+.cards-containerss {
+    background-color: #F7F2F2;
+    top: 0;
+    margin-top: 0px;
+    padding-top: 1px;
+}
+#page-title {
+    color: black;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: bold;
+    padding: 30px 15px 15px 15px;
+    text-align: center;
+}
+    .cardss {
+        width: 90%;
+        margin: 50px auto;
+        display: flex;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+    .cardss:hover {
+    transform:scale(1.02);
+    /* transition: 0.2s; */
+}
+    .card-imagess {
+        width: 30%;
+        height: auto;
+        flex: 1.1;
+    }
+
+    .detailsss {
+        background-color: rgb(229, 243, 255);
+        color: black;
+        padding:50px;
+        flex: 1.8;
+    }
+    #loan-titless {
+        color: #006CF7;
+        margin-bottom: 20px;
+        /* font-weight: bold; */
+    }
+    #max-fund {
+        background-color: #006CF7;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="cards-containerss">
+    <h2 id="page-title">Loans provided by us with Loan plans and Terms</h2>
+<hr>
+    {% for datas in availableLoans %}
+    <div class="cardss">
+        <div class="card-imagess">
+            <img src='{{ datas.loan_image.url }}' style="width: 100%; height: 100%;">
+        </div>
+        <div class="detailsss">
+            <h2 id="loan-titless">{{ datas.loan_type }}<hr></h2>
+            <p id="loan-descriptionss" style="margin-top: 10px; margin-bottom: 40px;"><b>{{ datas.loan_description }}</b></p>
+            <div id="max-fund-box" style="margin-bottom: 35px;">
+                <span id="max-fund">Max fund provided upto <b>Rs. {{ datas.max_loan_amount }}</b></span>
+            </div>
+            <div class="loan-plans-container" style="padding-top: 10px;">
+                <h3 id="loan-plansss" style="color: #006CF7; margin-bottom: 20px;">Plans provided for {{ datas.loan_type }}<hr></h3>
+                <ul style="list-style-type: none;">
+                {% for plans in availableLoanPlans %}
+                {% if plans.loan_type == datas %}
+                    <li style="font-size: 16px; margin-bottom: 5px;">{{ plans.loan_type }} with <b>{{ plans.loan_interest_rate }}%</b> interest for <b>{{ plans.loan_plan_duration_months }} months ({{ plans.loan_plan_duration_years }} years)</b></li>
+                {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

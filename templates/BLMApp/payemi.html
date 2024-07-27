@@ -1,0 +1,136 @@
+{% extends 'BLMApp/base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    #formContainer {
+        margin: 100px;
+    }
+
+    #navBar #navLink #pay-emi-online {
+    color: #183153;
+    background-color: #DEC9F5;
+    border-bottom: 3px solid #6F00A6; 
+    font-size: 14px;
+    box-shadow: 3px 3px 3px #797979;
+}
+
+#navBar #navLink #pay-emi-online:hover {
+    background-color: #ead7ff;
+}
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  background-color: #f6f6f6;
+}
+
+#title {
+    padding: 50px;
+    padding-bottom: 0px;
+}
+
+#title h2 {
+    font-family: 'Poppins', sans-serif !important;
+    color: #01C408;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.contentContainers {
+    display: flex;
+}
+
+#onlinePaymentImg {
+    width: 28%;
+    margin-left: 50px;
+}
+
+/* Form Styles */
+.form-container {
+  max-width: 500px;
+  margin: 0px auto;
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formContainer form {
+    margin: 0px auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-bottom-color: #3498db;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button[type="submit"] {
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #3498db;
+  color: #fff;
+  margin-left: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+#contents p {
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+
+</style>
+<div id="title">
+    <h2>Also pay your EMI through <span>online</span> here !!!</h2>
+</div>
+<div class="contentContainers">
+    <img id='onlinePaymentImg' src="{% static 'images/bannerImages/onlinePaymentBanner.png' %}">
+    <div id="contents">
+        <div id="formContainer">
+            <p>You can also pay your EMI through online here by just entering your Loan ID. You can easily pay your dues for your loans through online. <br><br>Please enter your <b>Loan ID</b> below</p>
+            <form action="{% url 'paymentPage' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="loan_id" placeholder="Enter your Loan ID here">
+                <button type="submit">Pay online now</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

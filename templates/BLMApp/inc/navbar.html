@@ -1,0 +1,79 @@
+{% load static %}
+<style>
+  #navTitleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  #navLink a {
+    justify-content: center;
+    align-items: center;
+  }
+  #navLink a i {
+    margin-right: 10px;
+    margin-bottom: 0px !important;
+  }
+  #navBar #navLink a {
+    transition: font-size 0.2s;
+    transition: background-color box-shadow 0.2s;
+  }
+  #navBar #navLink a:hover {
+color: #183153;
+background-color: #DEC9F5;
+font-size: 14px;
+box-shadow: 3px 3px 3px #797979;
+}
+  #login a button {
+    border: none;
+    padding: 8px 20px;
+    margin: 15px;
+    margin-right: 0px;
+    border-radius: 5px;
+    font-size: small;
+    /* background-color: #F7F700; */
+    background-color: #0093D4;
+    color:#fff;
+    font-weight: bolder;
+    transition: background-color 0.3s;
+  }
+  #login #loginbtn {
+    margin-right: 2px !important;
+  }
+  #login a button:hover {
+    background-color: #006a98;
+    /* transition: all 0.2s ease-in-out; */
+  }
+
+</style>
+
+
+<nav id="navBar">
+    <div id="navTitleBar">
+      <div id="logo">
+        <img src="https://yoursbank.com.br/wp-content/uploads/2021/10/logo-yours-pb.png">
+      </div>
+      <div id="login">
+        {% if user.is_authenticated %}
+        <!-- <a id="loginbtn" href="{% url 'profile' %}" title="{{ user.username }}"><button><i class="fa fa-user" style="margin-right: 10px; border-radius: 50%; padding: 5px; background-color: aliceblue; color: #0093D4;"></i>{{ user.username }}</button></a> -->
+        <a id="loginbtn" href="{% url 'profile' %}" title="{{ user.username }}" style="text-decoration: none; font-weight: bold;">
+          <i class="fa fa-user" style="margin-right: 5px; border-radius: 50%; padding: 10px; background-color: aliceblue; color: #0093D4;"></i>
+          {{ user.username }}
+        </a>
+        <a id="signupbtn" href="{% url 'logout' %}" style="margin-left: 20px;"><button>LOG OUT</button></a>
+        {% else %}
+        <a id="loginbtn" href="{% url 'login' %}"><button>LOGIN</button></a>
+        <a id="signupbtn" href="{% url 'signup' %}"><button>SIGN UP</button></a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div id="navLink">
+      <a id="home" href="{% url 'home' %}"><i class="fa fa-house"></i><span>Home</span></a>
+      <a id="register-for-kyc" href="{% url 'kycRegistrationForm' %}"><i class="fa-solid fa-id-card"></i><span>Register for KYC</span></a>
+      <a id="apply-loan" href="{% url 'loanForm' %}"><i class="fa-solid fa-file-pen"></i><span>Apply for Loans</span></a>
+      <a id="availableLoans" href="{% url 'availableLoans' %}"><i class="fa-sharp fa-solid fa-hand-holding-dollar"></i><span>Available Loans</span></a>
+      <a id="your-loans" href="{% url 'yourLoans' %}"><i class="fa-solid fa-sack-dollar"></i>Your Loans</a>
+      <a id="pay-emi-online" href="{% url 'payEmi' %}"><i class="fa-regular fa-credit-card"></i>Pay EMI Online</a>
+      <a id="about-us" href="#"><i class="fa-solid fa-building-columns"></i><span>About us</span></a>
+    </div>
+  </nav>
